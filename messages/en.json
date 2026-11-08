@@ -1,0 +1,32 @@
+{
+  "Navigation": {
+    "home": "Home",
+    "projects": "Projects",
+    "services": "Services",
+    "contact": "Contact",
+    "mainLabel": "Main navigation",
+    "homeLabel": "Ayman Fahd - Home",
+    "softwareEngineer": "Software Engineer",
+    "switchLanguage": "Switch language"
+  },
+  "Footer": {
+    "description": "Software Engineer building modern, scalable, and user-focused digital experiences. Turning complex ideas into reliable software.",
+    "workTogether": "Let's work together",
+    "explore": "Explore",
+    "connect": "Connect",
+    "contactPrompt": "Have a project in mind or want to discuss an opportunity? Let's connect.",
+    "allRightsReserved": "All rights reserved.",
+    "available": "Available for opportunities",
+    "backToTop": "Back to top"
+  },
+  "Home": {
+    "title": "Eng. Ayman",
+    "logoAlt": "Eng. Ayman logo"
+  },
+  "Theme": {
+    "toggle": "Toggle theme",
+    "light": "Light",
+    "dark": "Dark",
+    "system": "System"
+  }
+}
