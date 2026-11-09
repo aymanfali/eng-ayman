@@ -2,7 +2,6 @@
 
 import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Link } from "@/i18n/navigation";
 import { ModeToggle } from "../mode-toggle";
 import Image from "next/image";
 import LanguageSwitcher from "./language-switcher";
@@ -78,20 +77,24 @@ export default function Navbar() {
 
   return (
     <header className="fixed inset-x-0 bottom-0 z-50 px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] md:sticky md:top-0 md:bottom-auto md:px-6 md:pb-0 md:pt-5">
-      <div className="mx-auto flex items-center justify-between gap-4">
+      <div
+        aria-hidden="true"
+        className="pointer-events-none fixed inset-x-0 top-0 z-0 h-24 bg-gradient-to-b from-primary/20 via-primary/10 to-transparent backdrop-blur-md [mask-image:linear-gradient(to_bottom,black,transparent)]"
+      />
+      <div className="relative z-10 mx-auto flex items-center justify-between gap-4">
         {/* Brand */}
         <a
           href="#top"
           aria-label={t("homeLabel")}
-          className="group hidden shrink-0 items-center gap-3 md:flex"
+          className="group fixed left-3 top-[max(0.75rem,env(safe-area-inset-top))] flex shrink-0 items-center gap-3 md:static"
         >
           {/* <span className="flex size-10 items-center justify-center rounded-xl bg-primary text-sm font-bold text-primary-foreground shadow-sm transition-transform duration-200 group-hover:scale-105">
             AF
           </span> */}
 
-          <Image src="/ayman.svg" alt={t("homeLabel")} width={32} height={32} />
+          <Image src="/ayman.svg" alt={t("homeLabel")} width={42} height={42} />
 
-          <span className="flex flex-col">
+          <span className="hidden flex-col md:flex">
             <span className="text-sm font-bold tracking-tight text-foreground">
               {t("fullName")}
             </span>
@@ -151,13 +154,10 @@ export default function Navbar() {
           </div>
         </div>
 
-        {/* Theme toggle on mobile */}
-        <div className="md:hidden absolute right-3 top-0 -translate-y-[calc(100%+0.75rem)] md:static md:translate-y-0">
-          <div className="rounded-xl border border-border/70 bg-background/90 p-1 shadow-sm backdrop-blur-xl md:border-0 md:bg-transparent md:p-0 md:shadow-none">
-            <div className="md:hidden">
-              <ModeToggle />
-            </div>
-          </div>
+        {/* Theme and language controls on mobile */}
+        <div className="fixed right-3 top-[max(0.75rem,env(safe-area-inset-top))] flex items-center gap-1 rounded-xl border border-border/70 bg-background/90 p-1 shadow-sm backdrop-blur-xl md:hidden">
+          <ModeToggle />
+          <LanguageSwitcher />
         </div>
       </div>
     </header>

@@ -17,9 +17,10 @@
     "connect": "Connect",
     "contactPrompt": "Have a project in mind or want to discuss an opportunity? Let's connect.",
     "allRightsReserved": "All rights reserved.",
-    "copyright": "© {year} Ayman Fahd. All rights reserved.",
+    "copyright": "© {year} All rights reserved.",
     "available": "Available for opportunities",
-    "backToTop": "Back to top"
+    "backToTop": "Back to top",
+    "developedBy": "Developed by"
   },
   "Home": {
     "title": "Eng. Ayman",
