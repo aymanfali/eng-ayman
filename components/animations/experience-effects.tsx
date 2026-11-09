@@ -16,6 +16,8 @@ export function ExperienceEffects() {
 
 function IntroSplash() {
   const t = useTranslations("Common");
+  const tName = useTranslations();
+  const tNavigation = useTranslations("Navigation");
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
@@ -58,7 +60,10 @@ function IntroSplash() {
         <motion.div
           className="fixed inset-0 z-[200] flex items-center justify-center overflow-hidden bg-[#0e1116] text-white"
           initial={{ y: "0%" }}
-          exit={{ y: "-100%", transition: { duration: 0.85, ease: [0.76, 0, 0.24, 1] } }}
+          exit={{
+            y: "-100%",
+            transition: { duration: 0.85, ease: [0.76, 0, 0.24, 1] },
+          }}
           aria-label={t("loading")}
           role="status"
         >
@@ -67,24 +72,97 @@ function IntroSplash() {
             aria-hidden="true"
           >
             <defs>
-              <pattern id="intro-network-pattern" width="96" height="96" patternUnits="userSpaceOnUse">
+              <pattern
+                id="intro-network-pattern"
+                width="96"
+                height="96"
+                patternUnits="userSpaceOnUse"
+              >
                 <g transform="translate(24 24) scale(.7) translate(-32 -32)">
-                  <polyline points="25,19 11,32 25,45" fill="none" stroke="white" strokeOpacity=".1" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M40 32L53 19M40 32L53 45" stroke="#2dd4bf" strokeOpacity=".35" strokeWidth="3" strokeLinecap="round" />
-                  <circle cx="40" cy="32" r="4.5" fill="#2dd4bf" fillOpacity=".35" />
-                  <circle cx="53" cy="19" r="3.5" fill="#2dd4bf" fillOpacity=".35" />
-                  <circle cx="53" cy="45" r="3.5" fill="#2dd4bf" fillOpacity=".35" />
+                  <polyline
+                    points="25,19 11,32 25,45"
+                    fill="none"
+                    stroke="white"
+                    strokeOpacity=".1"
+                    strokeWidth="5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M40 32L53 19M40 32L53 45"
+                    stroke="#2dd4bf"
+                    strokeOpacity=".35"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                  />
+                  <circle
+                    cx="40"
+                    cy="32"
+                    r="4.5"
+                    fill="#2dd4bf"
+                    fillOpacity=".35"
+                  />
+                  <circle
+                    cx="53"
+                    cy="19"
+                    r="3.5"
+                    fill="#2dd4bf"
+                    fillOpacity=".35"
+                  />
+                  <circle
+                    cx="53"
+                    cy="45"
+                    r="3.5"
+                    fill="#2dd4bf"
+                    fillOpacity=".35"
+                  />
                 </g>
                 <g transform="translate(72 72) scale(.7) translate(-32 -32)">
-                  <polyline points="25,19 11,32 25,45" fill="none" stroke="white" strokeOpacity=".1" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M40 32L53 19M40 32L53 45" stroke="#2dd4bf" strokeOpacity=".35" strokeWidth="3" strokeLinecap="round" />
-                  <circle cx="40" cy="32" r="4.5" fill="#2dd4bf" fillOpacity=".35" />
-                  <circle cx="53" cy="19" r="3.5" fill="#2dd4bf" fillOpacity=".35" />
-                  <circle cx="53" cy="45" r="3.5" fill="#2dd4bf" fillOpacity=".35" />
+                  <polyline
+                    points="25,19 11,32 25,45"
+                    fill="none"
+                    stroke="white"
+                    strokeOpacity=".1"
+                    strokeWidth="5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M40 32L53 19M40 32L53 45"
+                    stroke="#2dd4bf"
+                    strokeOpacity=".35"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                  />
+                  <circle
+                    cx="40"
+                    cy="32"
+                    r="4.5"
+                    fill="#2dd4bf"
+                    fillOpacity=".35"
+                  />
+                  <circle
+                    cx="53"
+                    cy="19"
+                    r="3.5"
+                    fill="#2dd4bf"
+                    fillOpacity=".35"
+                  />
+                  <circle
+                    cx="53"
+                    cy="45"
+                    r="3.5"
+                    fill="#2dd4bf"
+                    fillOpacity=".35"
+                  />
                 </g>
               </pattern>
             </defs>
-            <rect width="100%" height="100%" fill="url(#intro-network-pattern)" />
+            <rect
+              width="100%"
+              height="100%"
+              fill="url(#intro-network-pattern)"
+            />
           </svg>
           <div className="relative flex flex-col items-center gap-6 px-6 text-center">
             <motion.svg
@@ -132,7 +210,11 @@ function IntroSplash() {
                   fill="#2dd4bf"
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1 }}
-                  transition={{ delay: 0.8 + index * 0.1, duration: 0.45, type: "spring" }}
+                  transition={{
+                    delay: 0.8 + index * 0.1,
+                    duration: 0.45,
+                    type: "spring",
+                  }}
                 />
               ))}
             </motion.svg>
@@ -142,17 +224,25 @@ function IntroSplash() {
                 className="mr-2 inline-block"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 0.9, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+                transition={{
+                  delay: 0.9,
+                  duration: 0.65,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
               >
-                Ayman
+                {tName("Ayman")}
               </motion.span>
               <motion.span
                 className="inline-block"
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.02, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+                transition={{
+                  delay: 1.02,
+                  duration: 0.65,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
               >
-                Fahd
+                {tName("Fahd")}
               </motion.span>
             </div>
 
@@ -162,7 +252,7 @@ function IntroSplash() {
               animate={{ opacity: 1 }}
               transition={{ delay: 1.3, duration: 0.6 }}
             >
-              SOFTWARE ENGINEER
+              {tNavigation("softwareEngineer")}
             </motion.p>
 
             <div className="h-0.5 w-[min(200px,60vw)] overflow-hidden rounded-full bg-[#242b35]">
