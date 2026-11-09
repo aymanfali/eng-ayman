@@ -93,7 +93,7 @@ export default async function Footer() {
             </p>
 
             <Link
-              href="/contact"
+              href="#contact"
               className="group mt-7 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-secondary shadow-lg shadow-primary/15 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/25"
             >
               {t("workTogether")}
