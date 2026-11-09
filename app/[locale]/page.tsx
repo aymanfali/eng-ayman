@@ -14,8 +14,8 @@ export default function HomePage() {
       <ScrollProgress />
       <main id="top">
         <Hero />
-        <Services />
         <Projects />
+        <Services />
         <Story />
         <Process />
         <Contact />

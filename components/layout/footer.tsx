@@ -1,6 +1,6 @@
 import { getTranslations } from "next-intl/server";
 import { Link } from "@/i18n/navigation";
-import { ArrowUpRight, Mail, ArrowUp, Code2 } from "lucide-react";
+import { ArrowUpRight, Mail, ArrowUp } from "lucide-react";
 import { cacheLife } from "next/cache";
 import Image from "next/image";
 
@@ -76,14 +76,14 @@ export default async function Footer() {
                 {/* <Code2 className="size-6" strokeWidth={2.2} /> */}
                 <Image
                   src="/ayman.svg"
-                  alt={t("homeLabel")}
+                  alt={tNavigation("homeLabel")}
                   width={32}
                   height={32}
                 />
               </span>
 
               <span className="text-lg font-bold tracking-tight text-foreground">
-                Ayman Fahd
+                {tNavigation("fullName")}
                 <span className="text-primary">.</span>
               </span>
             </Link>
@@ -160,9 +160,7 @@ export default async function Footer() {
         {/* Bottom bar */}
         <div className="flex flex-col gap-5 border-t border-border/70 py-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-muted-foreground">
-            © {currentYear}{" "}
-            <span className="font-medium text-foreground">Ayman Fahd</span>. All
-            {t("allRightsReserved")}
+            {t("copyright", { year: currentYear })}
           </p>
 
           <div className="flex items-center justify-between gap-6 sm:justify-end">

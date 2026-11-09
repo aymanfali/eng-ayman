@@ -1,4 +1,5 @@
 import type { ReactNode } from "react";
+import { useTranslations } from "next-intl";
 
 import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils";
@@ -13,13 +14,14 @@ type ErrorStateProps = {
 };
 
 export function ErrorState({
-  title = "Something went wrong",
-  description = "Please try again in a moment.",
-  actionLabel = "Try again",
+  title,
+  description,
+  actionLabel,
   onRetry,
   className,
   icon,
 }: ErrorStateProps) {
+  const t = useTranslations("Feedback");
   return (
     <div
       role="alert"
@@ -30,12 +32,12 @@ export function ErrorState({
     >
       {icon ? <div>{icon}</div> : null}
       <div className="space-y-2">
-        <h2 className="text-lg font-semibold text-foreground">{title}</h2>
-        <p className="text-sm text-muted-foreground">{description}</p>
+        <h2 className="text-lg font-semibold text-foreground">{title ?? t("errorTitle")}</h2>
+        <p className="text-sm text-muted-foreground">{description ?? t("errorDescription")}</p>
       </div>
       {onRetry ? (
         <Button variant="secondary" onClick={onRetry}>
-          {actionLabel}
+          {actionLabel ?? t("retry")}
         </Button>
       ) : null}
     </div>

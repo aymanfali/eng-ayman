@@ -2,15 +2,17 @@
 
 import { useRef } from 'react';
 import { motion, useReducedMotion, useScroll, useSpring, useTransform } from 'motion/react';
-import { processSteps } from '@/data/portfolio';
+import { useTranslations } from 'next-intl';
 import { Reveal } from './shared';
 
 const sectionClass = "border-t border-border py-[88px] max-[760px]:py-16";
 const containerClass = "mx-auto w-full max-w-[1120px] px-6";
 const kickerClass = "mb-3 text-[13px] font-medium tracking-[.24em] text-foreground dark:text-primary";
-const headingClass = "mb-10 max-w-[640px] font-heading text-[clamp(30px,4.5vw,46px)] leading-[1.08] font-semibold";
+const headingClass = "mb-10 max-w-[640px]  text-[clamp(30px,4.5vw,46px)] leading-[1.08] font-semibold";
 
 export function Process() {
+	const t = useTranslations('Process');
+	const processSteps = t.raw('steps') as { number: string; title: string; description: string }[];
 	const processRef = useRef<HTMLElement>(null);
 	const reduce = useReducedMotion();
 	const { scrollYProgress } = useScroll({
@@ -26,12 +28,12 @@ export function Process() {
 		<section ref={processRef} id="process" data-scroll-stack="pin" className={sectionClass}>
 			<div className={containerClass}>
 				<Reveal>
-					<p className={kickerClass}>PROCESS</p>
-					<h2 className={headingClass}>From idea to launch in four steps</h2>
+					<p className={kickerClass}>{t('sectionLabel')}</p>
+					<h2 className={headingClass}>{t('heading')}</h2>
 				</Reveal>
 				<div className="relative">
 					<motion.div
-						className="absolute top-[21px] right-7 left-7 h-0.5 origin-left bg-primary max-[760px]:hidden"
+						className="absolute top-[21px] right-7 left-7 h-0.5 origin-left bg-primary max-[760px]:hidden rtl:origin-right"
 						style={{ scaleX: reduce ? 1 : lineProgress }}
 						aria-hidden="true"
 					/>
@@ -45,10 +47,10 @@ export function Process() {
 								viewport={{ once: true, amount: 0.2 }}
 								transition={{ duration: 0.7, delay: index * 0.12, ease: [0.22, 1, 0.36, 1] }}
 							>
-								<b className="absolute top-0 left-0 grid size-11 place-items-center rounded-full border-2 border-primary bg-background font-heading text-[15px] font-semibold">
+								<b className="absolute top-0 left-0 grid size-11 place-items-center rounded-full border-2 border-primary bg-background  text-[15px] font-semibold">
 									{step.number}
 								</b>
-								<h3 className="mb-1.5 font-heading text-xl font-semibold">
+								<h3 className="mb-1.5  text-xl font-semibold">
 									{step.title}
 								</h3>
 								<p className="m-0 text-base text-muted-foreground">

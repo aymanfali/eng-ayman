@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { useRef } from "react";
+import { useTranslations } from "next-intl";
 import {
   motion,
   useReducedMotion,
@@ -14,17 +15,6 @@ import {
 type SkillsMarqueeProps = {
   reduceMotion: boolean;
 };
-
-// Data
-const skills = [
-  "AI INTEGRATION",
-  "FRONTEND ENGINEERING",
-  "DESIGN SYSTEMS",
-  "ACCESSIBLE INTERFACES",
-  "TECHNICAL CONSULTING",
-];
-
-const words = ["Production", "software,", "built", "to", "last."];
 
 // Animation
 const ease = [0.22, 1, 0.36, 1] as const;
@@ -50,6 +40,9 @@ const staggerContainer: Variants = {
 
 // Hero
 export function Hero() {
+  const t = useTranslations("Hero");
+  const skills = t.raw("skills") as string[];
+  const words = t.raw("headlineWords") as string[];
   const heroRef = useRef<HTMLElement>(null);
   const reduceMotion = useReducedMotion();
 
@@ -149,12 +142,12 @@ export function Hero() {
                 variants={fadeUp}
                 className="flex items-center gap-3 text-sm font-medium tracking-[.28em] text-ink before:h-0.75 before:w-7 before:rounded-sm before:bg-teal before:content-[''] dark:text-teal"
               >
-                SOFTWARE ENGINEER
+                {t("role")}
               </motion.div>
 
               <h1
                 className="my-6 font-head text-[clamp(44px,8vw,88px)] font-semibold leading-[1.02] tracking-[-.035em]"
-                aria-label="Production software, built to last."
+                aria-label={t("headlineLabel")}
               >
                 {words.map((word, index) => (
                   <span
@@ -181,8 +174,7 @@ export function Hero() {
                 variants={fadeUp}
                 className="mb-9 max-w-135 text-xl text-muted-foreground"
               >
-                I design, build and ship reliable web software, from the first
-                commit to a stable release and beyond.
+                {t("description")}
               </motion.p>
 
               <motion.div variants={fadeUp} className="flex flex-wrap gap-3">
@@ -207,7 +199,7 @@ export function Hero() {
                   whileTap={reduceMotion ? undefined : { scale: 0.97 }}
                   className="inline-flex min-h-12 items-center rounded-xl bg-ink px-6.5 font-medium focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal bg-primary dark:text-secondary"
                 >
-                  View selected work
+                  {t("viewWork")}
                 </motion.a>
 
                 <motion.a
@@ -216,7 +208,7 @@ export function Hero() {
                   whileTap={reduceMotion ? undefined : { scale: 0.97 }}
                   className="inline-flex min-h-12 items-center rounded-xl border border-line px-6.5 font-medium text-ink focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal dark:border-dark-line dark:text-dark-ink"
                 >
-                  Start a project
+                  {t("startProject")}
                 </motion.a>
               </motion.div>
             </div>
@@ -241,7 +233,7 @@ export function Hero() {
                 <div className="absolute inset-4 rounded-[1.5rem] border border-teal/20 bg-teal/5" />
                 <Image
                   src="/ayman.svg"
-                  alt="Ayman"
+                  alt={t("headlineLabel")}
                   width={240}
                   height={240}
                   priority
@@ -252,14 +244,14 @@ export function Hero() {
           </div>
         </motion.div>
 
-        <SkillsMarquee reduceMotion={!!reduceMotion} />
+        <SkillsMarquee skills={skills} reduceMotion={!!reduceMotion} />
       </section>
     </>
   );
 }
 
 // Skills Marquee
-function SkillsMarquee({ reduceMotion }: SkillsMarqueeProps) {
+function SkillsMarquee({ skills, reduceMotion }: SkillsMarqueeProps & { skills: string[] }) {
   return (
     <motion.div
       className="mt-18 overflow-hidden whitespace-nowrap border-y border-line mask-[linear-gradient(90deg,transparent,#000_8%,#000_92%,transparent)] dark:border-dark-line"

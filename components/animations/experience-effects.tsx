@@ -1,6 +1,7 @@
 "use client";
 
 import { AnimatePresence, motion, useMotionValue, useReducedMotion, useSpring } from "motion/react";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
 export function ExperienceEffects() {
@@ -14,6 +15,7 @@ export function ExperienceEffects() {
 }
 
 function IntroSplash() {
+  const t = useTranslations("Common");
   const [visible, setVisible] = useState(true);
 
   useEffect(() => {
@@ -57,7 +59,7 @@ function IntroSplash() {
           className="fixed inset-0 z-[200] flex items-center justify-center overflow-hidden bg-[#0e1116] text-white"
           initial={{ y: "0%" }}
           exit={{ y: "-100%", transition: { duration: 0.85, ease: [0.76, 0, 0.24, 1] } }}
-          aria-label="Loading"
+          aria-label={t("loading")}
           role="status"
         >
           <svg
@@ -135,7 +137,7 @@ function IntroSplash() {
               ))}
             </motion.svg>
 
-            <div className="font-heading text-[clamp(36px,7vw,56px)] leading-none font-semibold">
+            <div className=" text-[clamp(36px,7vw,56px)] leading-none font-semibold">
               <motion.span
                 className="mr-2 inline-block"
                 initial={{ opacity: 0, y: 30 }}

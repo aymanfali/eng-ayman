@@ -15,7 +15,7 @@ const fontEnglish = localFont({
   src: "../public/fonts/Space_Grotesk/SpaceGrotesk-VariableFont_wght.ttf",
   variable: "--font-english",
   display: "swap",
-  weight: "100 900",
+  weight: "100 400 600 900",
 });
 
 // Arabic Font (e.g., Cairo, Tajawal, IBM Plex Sans Arabic)
@@ -23,7 +23,7 @@ const fontArabic = localFont({
   src: "../public/fonts/Noto_Kufi_Arabic/NotoKufiArabic-VariableFont_wght.ttf",
   variable: "--font-arabic",
   display: "swap",
-  weight: "100 900",
+  weight: "100 400 600 900",
 });
 
 export const metadata: Metadata = {

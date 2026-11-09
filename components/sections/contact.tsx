@@ -2,13 +2,15 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { useForm } from "react-hook-form";
+import { useTranslations } from "next-intl";
 
 import { useToast } from "@/components/feedback/toaster";
 import { submitContactMessage } from "@/lib/api/services";
-import { contactFormSchema } from "@/lib/validation/forms";
+import { createContactFormSchema } from "@/lib/validation/forms";
 import { Reveal } from "./shared";
 
 export function Contact() {
+  const t = useTranslations("Contact");
   const { push } = useToast();
 
   const {
@@ -17,7 +19,13 @@ export function Contact() {
     reset,
     formState: { errors, isSubmitting },
   } = useForm({
-    resolver: zodResolver(contactFormSchema),
+    resolver: zodResolver(createContactFormSchema({
+      nameMin: t("nameMin"),
+      nameMax: t("nameMax"),
+      emailInvalid: t("emailInvalid"),
+      messageMin: t("messageMin"),
+      messageMax: t("messageMax"),
+    })),
     defaultValues: {
       name: "",
       email: "",
@@ -30,8 +38,8 @@ export function Contact() {
 
     if (!response.ok) {
       push({
-        title: "Message not sent",
-        description: response.error.userMessage,
+        title: t("failedTitle"),
+        description: t("failedDescription"),
         variant: "error",
       });
       return;
@@ -39,8 +47,8 @@ export function Contact() {
 
     reset();
     push({
-      title: "Message sent",
-      description: "Thanks for reaching out. I will get back to you soon.",
+      title: t("sentTitle"),
+      description: t("sentDescription"),
       variant: "success",
     });
   };
@@ -61,25 +69,25 @@ export function Contact() {
 
             <div className="relative z-10 mx-auto grid max-w-5xl gap-8 lg:grid-cols-[1.1fr_1.3fr] lg:items-center">
               <div className="text-center lg:text-left">
-                <h2 className="mb-4 font-heading text-[clamp(30px,4.5vw,46px)] leading-[1.08] font-semibold text-white">
-                  Let’s build something intelligent.
+                <h2 className="mb-4  text-[clamp(30px,4.5vw,46px)] leading-[1.08] font-semibold text-white">
+                  {t("heading")}
                 </h2>
                 <p className="max-w-[480px] text-[#9ca3af]">
-                  Tell me about your product and where AI could help. I reply to every message.
+                  {t("description")}
                 </p>
               </div>
 
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-4 rounded-2xl border border-white/10 bg-white/5 p-5 backdrop-blur-sm">
                 <div className="space-y-2">
                   <label htmlFor="name" className="text-sm font-medium text-white/90">
-                    Name
+                    {t("name")}
                   </label>
                   <input
                     id="name"
                     {...register("name")}
                     aria-invalid={Boolean(errors.name)}
                     className="w-full rounded-xl border border-white/15 bg-[#0e1116]/40 px-3 py-2.5 text-sm text-white placeholder:text-white/40 focus:border-primary focus:outline-none"
-                    placeholder="Your name"
+                    placeholder={t("namePlaceholder")}
                   />
                   {errors.name ? (
                     <p className="text-xs text-red-300">{errors.name.message}</p>
@@ -88,7 +96,7 @@ export function Contact() {
 
                 <div className="space-y-2">
                   <label htmlFor="email" className="text-sm font-medium text-white/90">
-                    Email
+                    {t("email")}
                   </label>
                   <input
                     id="email"
@@ -96,7 +104,7 @@ export function Contact() {
                     {...register("email")}
                     aria-invalid={Boolean(errors.email)}
                     className="w-full rounded-xl border border-white/15 bg-[#0e1116]/40 px-3 py-2.5 text-sm text-white placeholder:text-white/40 focus:border-primary focus:outline-none"
-                    placeholder="you@example.com"
+                    placeholder={t("emailPlaceholder")}
                   />
                   {errors.email ? (
                     <p className="text-xs text-red-300">{errors.email.message}</p>
@@ -105,7 +113,7 @@ export function Contact() {
 
                 <div className="space-y-2">
                   <label htmlFor="message" className="text-sm font-medium text-white/90">
-                    Project details
+                    {t("details")}
                   </label>
                   <textarea
                     id="message"
@@ -113,7 +121,7 @@ export function Contact() {
                     {...register("message")}
                     aria-invalid={Boolean(errors.message)}
                     className="w-full rounded-xl border border-white/15 bg-[#0e1116]/40 px-3 py-2.5 text-sm text-white placeholder:text-white/40 focus:border-primary focus:outline-none"
-                    placeholder="Tell me a bit about your product, challenge, and timeline."
+                    placeholder={t("detailsPlaceholder")}
                   />
                   {errors.message ? (
                     <p className="text-xs text-red-300">{errors.message.message}</p>
@@ -125,7 +133,7 @@ export function Contact() {
                   disabled={isSubmitting}
                   className="inline-flex min-h-12 items-center justify-center rounded-xl bg-primary px-[26px] font-medium text-primary-foreground transition-colors hover:bg-primary/85 focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-primary disabled:cursor-not-allowed disabled:opacity-60"
                 >
-                  {isSubmitting ? "Sending..." : "Send message"}
+                  {isSubmitting ? t("sending") : t("send")}
                 </button>
               </form>
             </div>

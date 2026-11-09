@@ -1,16 +1,17 @@
 "use client";
 
+import { useEffect, useState } from "react";
 import { useTranslations } from "next-intl";
-import { Link, usePathname } from "@/i18n/navigation";
+import { Link } from "@/i18n/navigation";
 import { ModeToggle } from "../mode-toggle";
 import Image from "next/image";
 import LanguageSwitcher from "./language-switcher";
 
 const navItems = [
-  { label: "home", href: "/", icon: "home" },
-  { label: "projects", href: "/projects", icon: "projects" },
-  { label: "services", href: "/services", icon: "services" },
-  { label: "contact", href: "/contact", icon: "contact" },
+  { label: "home", target: "top", icon: "home" },
+  { label: "projects", target: "work", icon: "projects" },
+  { label: "services", target: "services", icon: "services" },
+  { label: "contact", target: "contact", icon: "contact" },
 ] as const;
 
 function NavIcon({ name }: { name: (typeof navItems)[number]["icon"] }) {
@@ -62,15 +63,25 @@ function NavIcon({ name }: { name: (typeof navItems)[number]["icon"] }) {
 }
 
 export default function Navbar() {
-  const pathname = usePathname();
+  const [activeTarget, setActiveTarget] = useState("top");
   const t = useTranslations("Navigation");
+
+  useEffect(() => {
+    const syncActiveTarget = () => {
+      setActiveTarget(window.location.hash.slice(1) || "top");
+    };
+
+    syncActiveTarget();
+    window.addEventListener("hashchange", syncActiveTarget);
+    return () => window.removeEventListener("hashchange", syncActiveTarget);
+  }, []);
 
   return (
     <header className="fixed inset-x-0 bottom-0 z-50 px-3 pb-[max(0.75rem,env(safe-area-inset-bottom))] md:sticky md:top-0 md:bottom-auto md:px-6 md:pb-0 md:pt-5">
       <div className="mx-auto flex items-center justify-between gap-4">
         {/* Brand */}
-        <Link
-          href="/"
+        <a
+          href="#top"
           aria-label={t("homeLabel")}
           className="group hidden shrink-0 items-center gap-3 md:flex"
         >
@@ -82,13 +93,13 @@ export default function Navbar() {
 
           <span className="flex flex-col">
             <span className="text-sm font-bold tracking-tight text-foreground">
-              Ayman Fahd
+              {t("fullName")}
             </span>
             <span className="text-xs text-muted-foreground">
               {t("softwareEngineer")}
             </span>
           </span>
-        </Link>
+        </a>
 
         {/* Navigation dock */}
         <nav
@@ -97,17 +108,13 @@ export default function Navbar() {
         >
           <ul className="flex items-center justify-around gap-1 md:justify-center md:gap-1">
             {navItems.map((item) => {
-              const isActive =
-                item.href === "/"
-                  ? pathname === "/"
-                  : pathname === item.href ||
-                    pathname.startsWith(`${item.href}/`);
+              const isActive = activeTarget === item.target;
 
               return (
-                <li key={item.href} className="min-w-0 flex-1 md:flex-none">
-                  <Link
-                    href={item.href}
-                    aria-current={isActive ? "page" : undefined}
+                <li key={item.target} className="min-w-0 flex-1 md:flex-none">
+                  <a
+                    href={`#${item.target}`}
+                    aria-current={isActive ? "location" : undefined}
                     className={[
                       "nav-item group relative flex min-h-14 flex-col items-center justify-center gap-1 rounded-xl px-2 py-2 text-xs font-medium transition-all duration-200 ease-out focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary motion-reduce:transition-none md:min-h-11 md:flex-row md:gap-2 md:rounded-full md:px-5 md:py-2.5 md:text-sm",
                       isActive
@@ -125,7 +132,7 @@ export default function Navbar() {
                         className="absolute bottom-1 h-1 w-1 rounded-full bg-primary md:hidden"
                       />
                     )}
-                  </Link>
+                  </a>
                 </li>
               );
             })}
