@@ -85,15 +85,15 @@ export function Hero() {
 
             <path
               d="M40 32L53 19M40 32L53 45"
-              stroke="#2DD4BF"
+              stroke="#5B53A3"
               strokeOpacity=".4"
               strokeWidth="3"
               strokeLinecap="round"
             />
 
-            <circle cx="40" cy="32" r="4.5" fill="#2DD4BF" fillOpacity=".4" />
-            <circle cx="53" cy="19" r="3.5" fill="#2DD4BF" fillOpacity=".4" />
-            <circle cx="53" cy="45" r="3.5" fill="#2DD4BF" fillOpacity=".4" />
+            <circle cx="40" cy="32" r="4.5" fill="#5B53A3" fillOpacity=".4" />
+            <circle cx="53" cy="19" r="3.5" fill="#5B53A3" fillOpacity=".4" />
+            <circle cx="53" cy="45" r="3.5" fill="#5B53A3" fillOpacity=".4" />
           </g>
 
           <pattern
@@ -240,7 +240,7 @@ export function Hero() {
               <div className="relative flex h-[360px] w-[280px] items-center justify-center rounded-[2rem] border border-line/80 bg-white/5 shadow-[0_20px_60px_rgba(11,18,32,0.18)] backdrop-blur-sm dark:border-dark-line/80">
                 <div className="absolute inset-4 rounded-[1.5rem] border border-teal/20 bg-teal/5" />
                 <Image
-                  src="/ayman.svg"
+                  src="/abrar.png"
                   alt="Ayman"
                   width={240}
                   height={240}

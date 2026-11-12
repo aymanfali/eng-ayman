@@ -1,6 +1,6 @@
 "use client";
 
-import { AnimatePresence, motion, useMotionValue, useReducedMotion, useSpring } from "motion/react";
+import { AnimatePresence, motion, useMotionValue, useReducedMotion } from "motion/react";
 import { useEffect, useState } from "react";
 
 export function ExperienceEffects() {
@@ -54,7 +54,7 @@ function IntroSplash() {
     <AnimatePresence>
       {visible && (
         <motion.div
-          className="fixed inset-0 z-[200] flex items-center justify-center overflow-hidden bg-[#0e1116] text-white"
+          className="fixed inset-0 z-[200] flex items-center justify-center overflow-hidden bg-[#191431] text-white"
           initial={{ y: "0%" }}
           exit={{ y: "-100%", transition: { duration: 0.85, ease: [0.76, 0, 0.24, 1] } }}
           aria-label="Loading"
@@ -68,17 +68,17 @@ function IntroSplash() {
               <pattern id="intro-network-pattern" width="96" height="96" patternUnits="userSpaceOnUse">
                 <g transform="translate(24 24) scale(.7) translate(-32 -32)">
                   <polyline points="25,19 11,32 25,45" fill="none" stroke="white" strokeOpacity=".1" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M40 32L53 19M40 32L53 45" stroke="#2dd4bf" strokeOpacity=".35" strokeWidth="3" strokeLinecap="round" />
-                  <circle cx="40" cy="32" r="4.5" fill="#2dd4bf" fillOpacity=".35" />
-                  <circle cx="53" cy="19" r="3.5" fill="#2dd4bf" fillOpacity=".35" />
-                  <circle cx="53" cy="45" r="3.5" fill="#2dd4bf" fillOpacity=".35" />
+                  <path d="M40 32L53 19M40 32L53 45" stroke="#998ac1" strokeOpacity=".35" strokeWidth="3" strokeLinecap="round" />
+                  <circle cx="40" cy="32" r="4.5" fill="#998ac1" fillOpacity=".35" />
+                  <circle cx="53" cy="19" r="3.5" fill="#998ac1" fillOpacity=".35" />
+                  <circle cx="53" cy="45" r="3.5" fill="#998ac1" fillOpacity=".35" />
                 </g>
                 <g transform="translate(72 72) scale(.7) translate(-32 -32)">
                   <polyline points="25,19 11,32 25,45" fill="none" stroke="white" strokeOpacity=".1" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
-                  <path d="M40 32L53 19M40 32L53 45" stroke="#2dd4bf" strokeOpacity=".35" strokeWidth="3" strokeLinecap="round" />
-                  <circle cx="40" cy="32" r="4.5" fill="#2dd4bf" fillOpacity=".35" />
-                  <circle cx="53" cy="19" r="3.5" fill="#2dd4bf" fillOpacity=".35" />
-                  <circle cx="53" cy="45" r="3.5" fill="#2dd4bf" fillOpacity=".35" />
+                  <path d="M40 32L53 19M40 32L53 45" stroke="#998ac1" strokeOpacity=".35" strokeWidth="3" strokeLinecap="round" />
+                  <circle cx="40" cy="32" r="4.5" fill="#998ac1" fillOpacity=".35" />
+                  <circle cx="53" cy="19" r="3.5" fill="#998ac1" fillOpacity=".35" />
+                  <circle cx="53" cy="45" r="3.5" fill="#998ac1" fillOpacity=".35" />
                 </g>
               </pattern>
             </defs>
@@ -94,8 +94,8 @@ function IntroSplash() {
                 width="64"
                 height="64"
                 rx="16"
-                fill="#0e1116"
-                stroke="#2dd4bf"
+                fill="#191431"
+                stroke="#998ac1"
                 strokeOpacity=".35"
               />
               <motion.polyline
@@ -112,7 +112,7 @@ function IntroSplash() {
               <motion.path
                 d="M40 32L53 19M40 32L53 45"
                 fill="none"
-                stroke="#2dd4bf"
+                stroke="#998ac1"
                 strokeWidth="3"
                 strokeLinecap="round"
                 initial={{ pathLength: 0 }}
@@ -127,7 +127,7 @@ function IntroSplash() {
                 <motion.circle
                   key={node.cy}
                   {...node}
-                  fill="#2dd4bf"
+                  fill="#998ac1"
                   initial={{ opacity: 0, scale: 0 }}
                   animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.8 + index * 0.1, duration: 0.45, type: "spring" }}
@@ -190,8 +190,6 @@ function CursorEffects() {
   const reduceMotion = useReducedMotion();
   const pointerX = useMotionValue(-100);
   const pointerY = useMotionValue(-100);
-  const ringX = useSpring(pointerX, { stiffness: 300, damping: 24 });
-  const ringY = useSpring(pointerY, { stiffness: 300, damping: 24 });
   const [visible, setVisible] = useState(false);
   const [hovering, setHovering] = useState(false);
   const [pressed, setPressed] = useState(false);
@@ -206,8 +204,8 @@ function CursorEffects() {
 
     const onPointerMove = (event: PointerEvent) => {
       if (event.pointerType === "touch") return;
-      pointerX.set(event.clientX - 4);
-      pointerY.set(event.clientY - 4);
+      pointerX.set(event.clientX);
+      pointerY.set(event.clientY);
       setVisible(true);
     };
 
@@ -245,18 +243,29 @@ function CursorEffects() {
   }, [pointerX, pointerY, reduceMotion]);
 
   return (
-    <>
-      <motion.span
-        aria-hidden="true"
-        className={`pointer-events-none fixed top-0 left-0 z-[250] size-2 rounded-full bg-primary shadow-[0_0_0_1.5px_#0e1116] ${visible ? "opacity-100" : "opacity-0"}`}
-        style={{ x: pointerX, y: pointerY }}
+    <motion.svg
+      aria-hidden="true"
+      className={`pointer-events-none fixed left-0 top-0 z-[250] overflow-visible drop-shadow-[0_6px_18px_rgba(18,15,37,0.28)] transition-opacity duration-150 ${visible ? "opacity-100" : "opacity-0"}`}
+      width="28"
+      height="36"
+      viewBox="0 0 28 36"
+      style={{ x: pointerX, y: pointerY, scale: pressed ? 0.92 : hovering ? 1.08 : 1, transformOrigin: "0px 0px" }}
+    >
+      <path
+        d="M2 2v27l7-7 5 11 4-2-5-11h11L2 2Z"
+        fill="#fff"
+        stroke="#191431"
+        strokeLinejoin="round"
+        strokeWidth="1.7"
       />
-      <motion.span
-        aria-hidden="true"
-        className={`pointer-events-none fixed top-0 left-0 z-[250] size-10 rounded-full border-[1.5px] border-primary transition-colors duration-200 ${visible ? "opacity-100" : "opacity-0"} ${hovering ? "bg-primary/20" : "bg-transparent"}`}
-        style={{ x: ringX, y: ringY, translateX: -16, translateY: -16, scale: pressed ? 0.75 : hovering ? 1.7 : 1 }}
+      <path
+        d="m9 22 5 11 4-2-5-11"
+        fill="none"
+        stroke="#191431"
+        strokeLinejoin="round"
+        strokeWidth="1.2"
       />
-    </>
+    </motion.svg>
   );
 }
 

@@ -49,7 +49,7 @@ export function Contact() {
     <section id="contact" data-scroll-stack="pin" className="border-t border-border py-[88px] max-[760px]:py-16">
       <div className="mx-auto w-full max-w-[1120px] px-6">
         <Reveal>
-          <div className="relative overflow-hidden rounded-2xl bg-[#0e1116] px-8 py-[72px] text-white">
+          <div className="relative overflow-hidden rounded-2xl bg-[#191431] px-8 py-[72px] text-white">
             <div
               className="pointer-events-none absolute inset-0 bg-repeat opacity-45"
               style={{
@@ -78,7 +78,7 @@ export function Contact() {
                     id="name"
                     {...register("name")}
                     aria-invalid={Boolean(errors.name)}
-                    className="w-full rounded-xl border border-white/15 bg-[#0e1116]/40 px-3 py-2.5 text-sm text-white placeholder:text-white/40 focus:border-primary focus:outline-none"
+                    className="w-full rounded-xl border border-white/15 bg-[#191431]/40 px-3 py-2.5 text-sm text-white placeholder:text-white/40 focus:border-primary focus:outline-none"
                     placeholder="Your name"
                   />
                   {errors.name ? (
@@ -95,7 +95,7 @@ export function Contact() {
                     type="email"
                     {...register("email")}
                     aria-invalid={Boolean(errors.email)}
-                    className="w-full rounded-xl border border-white/15 bg-[#0e1116]/40 px-3 py-2.5 text-sm text-white placeholder:text-white/40 focus:border-primary focus:outline-none"
+                    className="w-full rounded-xl border border-white/15 bg-[#191431]/40 px-3 py-2.5 text-sm text-white placeholder:text-white/40 focus:border-primary focus:outline-none"
                     placeholder="you@example.com"
                   />
                   {errors.email ? (
@@ -112,7 +112,7 @@ export function Contact() {
                     rows={5}
                     {...register("message")}
                     aria-invalid={Boolean(errors.message)}
-                    className="w-full rounded-xl border border-white/15 bg-[#0e1116]/40 px-3 py-2.5 text-sm text-white placeholder:text-white/40 focus:border-primary focus:outline-none"
+                    className="w-full rounded-xl border border-white/15 bg-[#191431]/40 px-3 py-2.5 text-sm text-white placeholder:text-white/40 focus:border-primary focus:outline-none"
                     placeholder="Tell me a bit about your product, challenge, and timeline."
                   />
                   {errors.message ? (

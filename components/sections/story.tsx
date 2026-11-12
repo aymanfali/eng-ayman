@@ -119,10 +119,10 @@ function StoryDot({ index, progress }: { index: number; progress: MotionValue<nu
 			? [0, 0.3, 0.34, 0.62, 0.7, 1]
 			: [0, 0.62, 0.7, 1];
 	const output = index === 0
-		? ['#2dd4bf', '#2dd4bf', 'transparent', 'transparent']
+		? ['#998ac1', '#998ac1', 'transparent', 'transparent']
 		: index === 1
-			? ['transparent', 'transparent', '#2dd4bf', '#2dd4bf', 'transparent', 'transparent']
-			: ['transparent', 'transparent', '#2dd4bf', '#2dd4bf'];
+			? ['transparent', 'transparent', '#998ac1', '#998ac1', 'transparent', 'transparent']
+			: ['transparent', 'transparent', '#998ac1', '#998ac1'];
 	const fill = useTransform(progress, input, output);
 
 	return (
@@ -134,9 +134,9 @@ function StoryDot({ index, progress }: { index: number; progress: MotionValue<nu
 }
 
 function PipelineGraphic({ progress, reduce }: { progress: MotionValue<number>; reduce: boolean }) {
-	const stagePlan = useTransform(progress, [0, 0.33, 0.34, 1], ['#2dd4bf', '#2dd4bf', '#9ca3af', '#9ca3af']);
-	const stageBuild = useTransform(progress, [0, 0.3, 0.36, 0.63, 0.7, 1], ['#9ca3af', '#9ca3af', '#2dd4bf', '#2dd4bf', '#9ca3af', '#9ca3af']);
-	const stageShip = useTransform(progress, [0, 0.63, 0.7, 1], ['#9ca3af', '#9ca3af', '#2dd4bf', '#2dd4bf']);
+	const stagePlan = useTransform(progress, [0, 0.33, 0.34, 1], ['#998ac1', '#998ac1', '#9ca3af', '#9ca3af']);
+	const stageBuild = useTransform(progress, [0, 0.3, 0.36, 0.63, 0.7, 1], ['#9ca3af', '#9ca3af', '#998ac1', '#998ac1', '#9ca3af', '#9ca3af']);
+	const stageShip = useTransform(progress, [0, 0.63, 0.7, 1], ['#9ca3af', '#9ca3af', '#998ac1', '#998ac1']);
 	const modelOpacity = useTransform(progress, [0.28, 0.4], [0.35, 1]);
 	const productOpacity = useTransform(progress, [0.64, 0.76], [0.35, 1]);
 	const sourceGroups = [70, 132, 194, 256];
@@ -147,18 +147,18 @@ function PipelineGraphic({ progress, reduce }: { progress: MotionValue<number>; 
 		'M140 280C185 280 185 187 230 187',
 	];
 	const codeLines = [
-		{ x: 244, y: 120, width: 46, color: '#2dd4bf', start: 0.4 },
+		{ x: 244, y: 120, width: 46, color: '#998ac1', start: 0.4 },
 		{ x: 256, y: 138, width: 56, color: '#fff', start: 0.44 },
 		{ x: 256, y: 156, width: 38, color: '#fff', start: 0.48 },
 		{ x: 268, y: 174, width: 44, color: '#fff', start: 0.52 },
-		{ x: 256, y: 192, width: 30, color: '#2dd4bf', start: 0.56 },
+		{ x: 256, y: 192, width: 30, color: '#998ac1', start: 0.56 },
 		{ x: 244, y: 210, width: 20, color: '#fff', start: 0.6 },
-		{ x: 244, y: 228, width: 52, color: '#2dd4bf', start: 0.64 },
+		{ x: 244, y: 228, width: 52, color: '#998ac1', start: 0.64 },
 	];
 
 	return (
 		<svg
-			className="block h-auto w-full rounded-2xl bg-[#0e1116] p-4"
+			className="block h-auto w-full rounded-2xl bg-[#191431] p-4"
 			viewBox="0 0 560 360"
 			preserveAspectRatio="xMidYMid meet"
 			data-story-graphic
@@ -179,7 +179,7 @@ function PipelineGraphic({ progress, reduce }: { progress: MotionValue<number>; 
 				<text x="230" y="334" fontSize="9" letterSpacing="1.5" fill="#9ca3af">CODE + TESTS</text>
 				<text x="420" y="334" fontSize="9" letterSpacing="1.5" fill="#9ca3af">PRODUCTION</text>
 			</g>
-			<g stroke="#2dd4bf" strokeOpacity=".55" strokeWidth="1.5" fill="none" strokeLinecap="round">
+			<g stroke="#998ac1" strokeOpacity=".55" strokeWidth="1.5" fill="none" strokeLinecap="round">
 				{connectorPaths.map((path, index) => (
 					<ScrollPath
 						key={path}
@@ -196,7 +196,7 @@ function PipelineGraphic({ progress, reduce }: { progress: MotionValue<number>; 
 				<SourceCard key={y} y={y} index={index} progress={progress} reduce={reduce} />
 			))}
 			<motion.g style={reduce ? undefined : { opacity: modelOpacity }}>
-				<rect x="230" y="70" width="100" height="234" rx="14" fill="#151a21" stroke="#2dd4bf" strokeOpacity=".45" />
+				<rect x="230" y="70" width="100" height="234" rx="14" fill="#211c39" stroke="#998ac1" strokeOpacity=".45" />
 				<g fill="#fff" fillOpacity=".25">
 					<circle cx="246" cy="88" r="3" />
 					<circle cx="258" cy="88" r="3" />
@@ -206,15 +206,15 @@ function PipelineGraphic({ progress, reduce }: { progress: MotionValue<number>; 
 				{codeLines.map((line, index) => (
 					<CodeLine key={line.y} {...line} index={index} progress={progress} reduce={reduce} />
 				))}
-				<rect x="244" y="250" width="72" height="26" rx="13" fill="none" stroke="#2dd4bf" strokeOpacity=".6" />
+				<rect x="244" y="250" width="72" height="26" rx="13" fill="none" stroke="#998ac1" strokeOpacity=".6" />
 				<ScrollPath d="M256 263l5 5 9-10" progress={progress} start={0.64} end={0.72} reduce={reduce} strokeWidth={2.2} />
 				<rect x="278" y="259" width="26" height="4" rx="2" fill="#fff" fillOpacity=".4" />
 				<rect x="278" y="266" width="16" height="4" rx="2" fill="#fff" fillOpacity=".2" />
 			</motion.g>
 			<motion.g style={reduce ? undefined : { opacity: productOpacity }}>
-				<rect x="420" y="70" width="100" height="234" rx="14" fill="#151a21" stroke="#2dd4bf" strokeOpacity=".45" />
-				<rect x="432" y="84" width="22" height="22" rx="5" fill="#0e1116" stroke="#2dd4bf" strokeOpacity=".45" />
-				<path d="M441 89l-4 6 4 6m5-12 4 6-4 6" fill="none" stroke="#2dd4bf" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+				<rect x="420" y="70" width="100" height="234" rx="14" fill="#211c39" stroke="#998ac1" strokeOpacity=".45" />
+				<rect x="432" y="84" width="22" height="22" rx="5" fill="#191431" stroke="#998ac1" strokeOpacity=".45" />
+				<path d="M441 89l-4 6 4 6m5-12 4 6-4 6" fill="none" stroke="#998ac1" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
 				<rect x="462" y="91" width="42" height="5" rx="2.5" fill="#fff" fillOpacity=".35" />
 				<path d="M432 120H508" stroke="#242b35" />
 				{[0, 1, 2].map((index) => (
@@ -222,7 +222,7 @@ function PipelineGraphic({ progress, reduce }: { progress: MotionValue<number>; 
 				))}
 				<rect x="432" y="236" width="56" height="5" rx="2.5" fill="#fff" fillOpacity=".3" />
 				<rect x="432" y="248" width="38" height="5" rx="2.5" fill="#fff" fillOpacity=".15" />
-				<rect x="432" y="268" width="76" height="22" rx="11" fill="#2dd4bf" />
+				<rect x="432" y="268" width="76" height="22" rx="11" fill="#998ac1" />
 			</motion.g>
 		</svg>
 	);
@@ -235,7 +235,7 @@ function SourceCard({ y, index, progress, reduce }: { y: number; index: number; 
 	return (
 		<motion.g style={reduce ? undefined : { opacity, x }}>
 			<rect x="40" y={y} width="100" height="48" rx="10" fill="#151a21" stroke="#242b35" />
-			<rect x="52" y={y + 14} width="16" height="16" rx="4" fill="#2dd4bf" fillOpacity=".85" />
+			<rect x="52" y={y + 14} width="16" height="16" rx="4" fill="#998ac1" fillOpacity=".85" />
 			<rect x="76" y={y + 16} width={index % 2 === 0 ? 50 : 40} height="5" rx="2.5" fill="#fff" fillOpacity=".35" />
 			<rect x="76" y={y + 27} width={index % 2 === 0 ? 32 : 26} height="5" rx="2.5" fill="#fff" fillOpacity=".18" />
 		</motion.g>
@@ -318,7 +318,7 @@ function ProductBar({ index, progress, reduce }: { index: number; progress: Moti
 			width="14"
 			height={height}
 			rx="3"
-			fill="#2dd4bf"
+			fill="#998ac1"
 			fillOpacity={index === 0 ? 0.5 : index === 2 ? 0.7 : 1}
 			style={reduce ? undefined : { scaleY, transformBox: 'fill-box', transformOrigin: '50% 100%' }}
 		/>

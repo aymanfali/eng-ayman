@@ -1,0 +1,194 @@
+- generic [active] [ref=e1]:
+  - status "Loading" [ref=e2]:
+    - generic [ref=e3]:
+      - generic [ref=e8]:
+        - generic [ref=e9]: Ayman
+        - generic [ref=e10]: Fahd
+      - paragraph [ref=e11]: SOFTWARE ENGINEER
+    - button "Skip intro" [ref=e13]
+  - generic [ref=e14]:
+    - banner [ref=e15]:
+      - generic [ref=e16]:
+        - link "Ayman Fahd - Home" [ref=e17] [cursor=pointer]:
+          - /url: /
+          - img "Ayman Fahd - Home" [ref=e18]
+          - generic [ref=e19]:
+            - strong [ref=e20]: Ayman Fahd
+            - generic [ref=e21]: Graphic Designer
+        - navigation "Main navigation" [ref=e22]:
+          - list [ref=e23]:
+            - listitem [ref=e24]:
+              - link "Home" [ref=e25] [cursor=pointer]:
+                - /url: "#home"
+            - listitem [ref=e31]:
+              - link "About me" [ref=e32] [cursor=pointer]:
+                - /url: "#about"
+            - listitem [ref=e37]:
+              - link "Projects" [ref=e38] [cursor=pointer]:
+                - /url: "#projects"
+            - listitem [ref=e42]:
+              - link "Clients" [ref=e43] [cursor=pointer]:
+                - /url: "#clients"
+            - listitem [ref=e50]:
+              - link "Contact" [ref=e51] [cursor=pointer]:
+                - /url: "#contact"
+        - generic [ref=e56]:
+          - button "Toggle theme" [ref=e57]
+          - button "Switch language" [ref=e59]:
+            - generic [ref=e63]: العربية
+    - main [ref=e64]:
+      - generic [ref=e65]:
+        - region [ref=e66]:
+          - generic [ref=e67]:
+            - paragraph [ref=e68]: Independent graphic designer
+            - heading "Design that gives brands a voice." [level=1] [ref=e69]:
+              - generic [ref=e70]: Design that
+              - generic [ref=e71]: gives brands
+              - generic [ref=e72]: a voice.
+            - paragraph [ref=e73]: I'm a graphic designer shaping identities, packaging and campaigns that people remember.
+            - link "See my work" [ref=e74] [cursor=pointer]:
+              - /url: "#projects"
+          - generic "AF design mark" [ref=e78]:
+            - img "AF design mark" [ref=e80]
+            - generic [ref=e81]: AF / VISUAL DESIGN
+        - generic [ref=e82]:
+          - generic [ref=e83]:
+            - generic [aria-hidden] [ref=e84]: AF
+            - generic [ref=e85]: Ideas into identity
+          - generic [ref=e86]:
+            - paragraph [ref=e87]: A little about me
+            - heading "Thoughtful design, made to be remembered." [level=2] [ref=e88]
+            - paragraph [ref=e89]: I'm a graphic designer focused on brand identity, print and digital visuals. I start with listening, then turn ideas into clear, confident design systems.
+            - paragraph [ref=e90]: "Every project is built around one question: what should people feel when they see this brand?"
+            - generic [ref=e91]:
+              - generic [ref=e92]:
+                - strong [ref=e93]: 8+
+                - generic [ref=e94]: Years of experience
+              - generic [ref=e95]:
+                - strong [ref=e96]: 120+
+                - generic [ref=e97]: Projects delivered
+              - generic [ref=e98]:
+                - strong [ref=e99]: 60+
+                - generic [ref=e100]: Happy clients
+            - generic "Design skills" [ref=e101]:
+              - generic [ref=e102]: Brand identity
+              - generic [ref=e103]: Logo design
+              - generic [ref=e104]: Packaging
+              - generic [ref=e105]: Social media
+              - generic [ref=e106]: Illustration
+              - generic [ref=e107]: Motion graphics
+        - generic [ref=e108]:
+          - generic [ref=e109]:
+            - generic [ref=e110]:
+              - paragraph [ref=e111]: Selected work
+              - heading "My projects" [level=2] [ref=e112]
+            - generic [ref=e113]: 01 — 04
+          - generic [ref=e114]:
+            - article [ref=e115]:
+              - generic [aria-hidden] [ref=e116]:
+                - generic [ref=e117]: L
+                - generic [ref=e118]: "01"
+              - generic [ref=e119]:
+                - text: Brand identity
+                - heading "Lumen Coffee" [level=3] [ref=e120]
+                - paragraph [ref=e121]: A warm visual system for a specialty coffee roaster.
+            - article [ref=e125]:
+              - generic [aria-hidden] [ref=e126]:
+                - generic [ref=e127]: "N"
+                - generic [ref=e128]: "02"
+              - generic [ref=e129]:
+                - text: Packaging
+                - heading "Noor Skincare" [level=3] [ref=e130]
+                - paragraph [ref=e131]: Minimal packaging with a soft gradient language.
+            - article [ref=e135]:
+              - generic [aria-hidden] [ref=e136]:
+                - generic [ref=e137]: R
+                - generic [ref=e138]: "03"
+              - generic [ref=e139]:
+                - text: Campaign
+                - heading "Riyada Summit" [level=3] [ref=e140]
+                - paragraph [ref=e141]: Event branding across print, screens and social.
+            - article [ref=e145]:
+              - generic [aria-hidden] [ref=e146]:
+                - generic [ref=e147]: S
+                - generic [ref=e148]: "04"
+              - generic [ref=e149]:
+                - text: Illustration
+                - heading "Safar Magazine" [level=3] [ref=e150]
+                - paragraph [ref=e151]: Editorial illustrations for a travel quarterly.
+        - generic [ref=e156]:
+          - generic [ref=e157]:
+            - paragraph [ref=e158]: Good company
+            - heading "My clients" [level=2] [ref=e159]
+          - generic [ref=e160]:
+            - generic [ref=e161]: Lumen
+            - generic [ref=e162]: Noor
+            - generic [ref=e163]: Riyada
+            - generic [ref=e164]: Safar
+            - generic [ref=e165]: Atlas
+            - generic [ref=e166]: Bayan
+            - generic [ref=e167]: Wahaj
+            - generic [ref=e168]: Sahab
+            - generic [ref=e169]: Zahra
+            - generic [ref=e170]: Mawj
+        - generic [ref=e171]:
+          - generic [ref=e172]:
+            - paragraph [ref=e173]: Let's make something
+            - heading "Have a project in mind?" [level=2] [ref=e174]
+            - paragraph [ref=e175]: Tell me about it and I'll reply within two days.
+            - link "contact@aymanfahd.com" [ref=e176] [cursor=pointer]:
+              - /url: mailto:contact@aymanfahd.com
+          - generic [ref=e180]:
+            - generic [ref=e181]:
+              - generic [ref=e182]: Your name
+              - textbox "Your name" [ref=e183]
+            - generic [ref=e184]:
+              - generic [ref=e185]: Email address
+              - textbox "Email address" [ref=e186]
+            - generic [ref=e187]:
+              - generic [ref=e188]: Your message
+              - textbox "Your message" [ref=e189]
+            - button "Send message" [ref=e190]
+    - contentinfo [ref=e194]:
+      - generic [ref=e195]:
+        - generic [ref=e196]:
+          - generic [ref=e197]:
+            - link "Ayman Fahd - Home" [ref=e198] [cursor=pointer]:
+              - /url: /
+              - img "Ayman Fahd - Home" [ref=e200]
+              - generic [ref=e201]: Ayman Fahd.
+            - paragraph [ref=e202]: Graphic designer creating memorable identities, packaging and campaigns for ambitious brands.
+            - link "Let's work together" [ref=e203] [cursor=pointer]:
+              - /url: "#contact"
+          - generic [ref=e207]:
+            - heading "Explore" [level=3] [ref=e208]
+            - list [ref=e209]:
+              - listitem [ref=e210]:
+                - link "Home" [ref=e211] [cursor=pointer]:
+                  - /url: "#home"
+              - listitem [ref=e212]:
+                - link "Projects" [ref=e213] [cursor=pointer]:
+                  - /url: "#projects"
+              - listitem [ref=e214]:
+                - link "Services" [ref=e215] [cursor=pointer]:
+                  - /url: "#about"
+              - listitem [ref=e216]:
+                - link "Contact" [ref=e217] [cursor=pointer]:
+                  - /url: "#contact"
+          - generic [ref=e218]:
+            - heading "Connect" [level=3] [ref=e219]
+            - paragraph [ref=e220]: Have a project in mind or want to discuss an opportunity? Let's connect.
+            - link "contact@aymanfahd.com" [ref=e221] [cursor=pointer]:
+              - /url: mailto:contact@aymanfahd.com
+            - generic [ref=e225]:
+              - link "GitHub" [ref=e226] [cursor=pointer]:
+                - /url: https://github.com/aymanfali
+              - link "LinkedIn" [ref=e229] [cursor=pointer]:
+                - /url: https://www.linkedin.com/in/ayman-f-ali/
+        - generic [ref=e232]:
+          - paragraph [ref=e233]: © 2026 Ayman Fahd. AllAll rights reserved.
+          - generic [ref=e234]:
+            - generic [ref=e235]: Available for design projects
+            - link "Back to top" [ref=e239] [cursor=pointer]:
+              - /url: "#"
+  - button "Open Next.js Dev Tools" [ref=e247] [cursor=pointer]

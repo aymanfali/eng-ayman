@@ -5,10 +5,10 @@ import { cacheLife } from "next/cache";
 import Image from "next/image";
 
 const navigation = [
-  { label: "home", href: "/" },
-  { label: "projects", href: "/projects" },
-  { label: "services", href: "/services" },
-  { label: "contact", href: "/contact" },
+  { label: "home", href: "#home" },
+  { label: "projects", href: "#projects" },
+  { label: "services", href: "#about" },
+  { label: "contact", href: "#contact" },
 ];
 
 const socialLinks = [
@@ -55,7 +55,7 @@ export default async function Footer() {
   const currentYear = await getCurrentYear();
 
   return (
-    <footer className="relative mt-24 overflow-hidden border-t border-border/70 bg-background">
+    <footer className="relative mt-24 overflow-hidden border-t border-border/70 bg-background max-[700px]:pb-[calc(82px+env(safe-area-inset-bottom))]">
       {/* Decorative background */}
       <div
         aria-hidden="true"
@@ -75,15 +75,15 @@ export default async function Footer() {
               <span className="flex size-11 items-center justify-center rounded-xl bg-primary text-secondary shadow-lg shadow-primary/20 transition-transform duration-300 group-hover:-rotate-6">
                 {/* <Code2 className="size-6" strokeWidth={2.2} /> */}
                 <Image
-                  src="/ayman.svg"
-                  alt={t("homeLabel")}
+                  src="/abrar.png"
+                  alt={tNavigation("homeLabel")}
                   width={32}
                   height={32}
                 />
               </span>
 
               <span className="text-lg font-bold tracking-tight text-foreground">
-                Ayman Fahd
+                Abrar Fahd
                 <span className="text-primary">.</span>
               </span>
             </Link>
@@ -92,13 +92,13 @@ export default async function Footer() {
               {t("description")}
             </p>
 
-            <Link
-              href="/contact"
+            <a
+              href="#contact"
               className="group mt-7 inline-flex items-center gap-2 rounded-full bg-primary px-5 py-3 text-sm font-semibold text-secondary shadow-lg shadow-primary/15 transition-all duration-300 hover:-translate-y-1 hover:shadow-xl hover:shadow-primary/25"
             >
               {t("workTogether")}
               <ArrowUpRight className="size-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
-            </Link>
+            </a>
           </div>
 
           {/* Navigation */}
@@ -110,12 +110,12 @@ export default async function Footer() {
             <ul className="mt-6">
               {navigation.map((item) => (
                 <li key={item.href}>
-                  <Link
+                  <a
                     href={item.href}
                     className="nav-item group inline-flex items-center text-sm text-muted-foreground transition-colors hover:text-primary"
                   >
                     {tNavigation(item.label)}
-                  </Link>
+                  </a>
                 </li>
               ))}
             </ul>
@@ -131,13 +131,13 @@ export default async function Footer() {
               {t("contactPrompt")}
             </p>
 
-            <a
+            {/* <a
               href="mailto:contact@aymanfahd.com"
               className="mt-5 inline-flex items-center gap-2 text-sm font-medium text-foreground transition-colors hover:text-primary"
             >
               <Mail className="size-4 text-primary" />
               contact@aymanfahd.com
-            </a>
+            </a> */}
 
             <div className="mt-6 flex items-center gap-3">
               {socialLinks.map(({ label, href, icon }) => (
@@ -161,7 +161,7 @@ export default async function Footer() {
         <div className="flex flex-col gap-5 border-t border-border/70 py-6 sm:flex-row sm:items-center sm:justify-between">
           <p className="text-xs text-muted-foreground">
             © {currentYear}{" "}
-            <span className="font-medium text-foreground">Ayman Fahd</span>. All
+            <span className="font-medium text-foreground">Abrar Fahd</span>. All
             {t("allRightsReserved")}
           </p>
 

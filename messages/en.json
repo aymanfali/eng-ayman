@@ -4,24 +4,77 @@
     "projects": "Projects",
     "services": "Services",
     "contact": "Contact",
+    "me": "About me",
+    "clients": "Clients",
     "mainLabel": "Main navigation",
     "homeLabel": "Ayman Fahd - Home",
-    "softwareEngineer": "Software Engineer",
+    "softwareEngineer": "Graphic Designer",
     "switchLanguage": "Switch language"
   },
   "Footer": {
-    "description": "Software Engineer building modern, scalable, and user-focused digital experiences. Turning complex ideas into reliable software.",
+    "description": "Graphic designer creating memorable identities, packaging and campaigns for ambitious brands.",
     "workTogether": "Let's work together",
     "explore": "Explore",
     "connect": "Connect",
     "contactPrompt": "Have a project in mind or want to discuss an opportunity? Let's connect.",
     "allRightsReserved": "All rights reserved.",
-    "available": "Available for opportunities",
+    "available": "Available for design projects",
     "backToTop": "Back to top"
   },
   "Home": {
     "title": "Eng. Ayman",
     "logoAlt": "Eng. Ayman logo"
+  },
+  "Portfolio": {
+    "home": { "logoAlt": "AF design mark" },
+    "hero": {
+      "kicker": "Independent graphic designer",
+      "lines": ["Design that", "gives brands", "a voice."],
+      "description": "I'm a graphic designer shaping identities, packaging and campaigns that people remember.",
+      "cta": "See my work",
+      "scrollLabel": "Scroll to about"
+    },
+    "about": {
+      "kicker": "A little about me",
+      "title": "Thoughtful design, made to be remembered.",
+      "paragraphs": [
+        "I'm a graphic designer focused on brand identity, print and digital visuals. I start with listening, then turn ideas into clear, confident design systems.",
+        "Every project is built around one question: what should people feel when they see this brand?"
+      ],
+      "artCaption": "Ideas into identity",
+      "stats": [["8+", "Years of experience"], ["120+", "Projects delivered"], ["60+", "Happy clients"]],
+      "skillsLabel": "Design skills",
+      "skills": ["Brand identity", "Logo design", "Packaging", "Social media", "Illustration", "Motion graphics"]
+    },
+    "projects": {
+      "kicker": "Selected work",
+      "title": "My projects",
+      "items": [
+        ["Brand identity", "Lumen Coffee", "A warm visual system for a specialty coffee roaster."],
+        ["Packaging", "Noor Skincare", "Minimal packaging with a soft gradient language."],
+        ["Campaign", "Riyada Summit", "Event branding across print, screens and social."],
+        ["Illustration", "Safar Magazine", "Editorial illustrations for a travel quarterly."]
+      ]
+    },
+    "clients": {
+      "kicker": "Good company",
+      "title": "My clients",
+      "items": ["Lumen", "Noor", "Riyada", "Safar", "Atlas", "Bayan", "Wahaj", "Sahab", "Zahra", "Mawj"]
+    },
+    "contact": {
+      "kicker": "Let's make something",
+      "title": "Have a project in mind?",
+      "description": "Tell me about it and I'll reply within two days.",
+      "email": "contact@aymanfahd.com",
+      "name": "Your name",
+      "emailLabel": "Email address",
+      "message": "Your message",
+      "send": "Send message",
+      "sending": "Sending...",
+      "successTitle": "Message sent",
+      "successMessage": "Thanks for reaching out. I will get back to you soon.",
+      "errorTitle": "Message not sent"
+    }
   },
   "Theme": {
     "toggle": "Toggle theme",

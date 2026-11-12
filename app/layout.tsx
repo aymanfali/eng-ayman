@@ -3,6 +3,7 @@ import Script from "next/script";
 import { Geist_Mono } from "next/font/google";
 import "./globals.css";
 import localFont from "next/font/local";
+import { ExperienceEffects } from "@/components/animations/experience-effects";
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",
@@ -28,8 +29,8 @@ const fontArabic = localFont({
 
 export const metadata: Metadata = {
   title: {
-    default: "Ayman Fahd | Software Engineer",
-    template: "%s | Ayman Fahd",
+    default: "Abrar Fahd | Graphic Designer",
+    template: "%s | A Fahd",
   },
   description: "Software engineer building modern, scalable web applications.",
 };
@@ -51,6 +52,7 @@ export default function RootLayout({
       className={`${fontEnglish.variable} ${fontArabic.variable} ${geistMono.variable} h-full antialiased`}
     >
       <body className="flex min-h-full flex-col">
+        <ExperienceEffects />
         {children}
         <Script id="theme-init" strategy="beforeInteractive">
           {`try {
