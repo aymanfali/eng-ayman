@@ -1,4 +1,5 @@
 import { Suspense } from "react";
+import type { Metadata } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
@@ -9,6 +10,15 @@ import { ToastProvider } from "@/components/feedback/toaster";
 import { QueryProvider } from "@/components/providers/query-provider";
 import { ThemeProvider } from "@/components/theme-provider";
 import Footer from "@/components/layout/footer";
+
+export const metadata: Metadata = {
+  title: {
+    default: "Ayman Fahd | أيمن فهد",
+    template: "%s | Ayman Fahd",
+  },
+  description:
+    "Software Engineer building modern, scalable web applications. | مهندس برمجيات أطور تطبيقات ويب حديثة وقابلة للتوسع.",
+};
 
 export function generateStaticParams() {
   return routing.locales.map((locale) => ({ locale }));

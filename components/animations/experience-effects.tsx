@@ -1,6 +1,7 @@
 "use client";
 
-import { AnimatePresence, motion, useMotionValue, useReducedMotion } from "motion/react";
+import { AnimatePresence, motion, useMotionValue, useReducedMotion, useSpring } from "motion/react";
+import { useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
 
 export function ExperienceEffects() {
@@ -13,8 +14,11 @@ export function ExperienceEffects() {
   );
 }
 
-// function IntroSplash() {
-//   const [visible, setVisible] = useState(true);
+function IntroSplash() {
+  const t = useTranslations("Common");
+  const tName = useTranslations();
+  const tNavigation = useTranslations("Navigation");
+  const [visible, setVisible] = useState(true);
 
 //   useEffect(() => {
 //     let seen = false;
@@ -50,118 +54,206 @@ export function ExperienceEffects() {
 //     };
 //   }, []);
 
-//   return (
-//     <AnimatePresence>
-//       {visible && (
-//         <motion.div
-//           className="fixed inset-0 z-[200] flex items-center justify-center overflow-hidden bg-[#191431] text-white"
-//           initial={{ y: "0%" }}
-//           exit={{ y: "-100%", transition: { duration: 0.85, ease: [0.76, 0, 0.24, 1] } }}
-//           aria-label="Loading"
-//           role="status"
-//         >
-//           <svg
-//             className="pointer-events-none absolute inset-0 size-full opacity-80"
-//             aria-hidden="true"
-//           >
-//             <defs>
-//               <pattern id="intro-network-pattern" width="96" height="96" patternUnits="userSpaceOnUse">
-//                 <g transform="translate(24 24) scale(.7) translate(-32 -32)">
-//                   <polyline points="25,19 11,32 25,45" fill="none" stroke="white" strokeOpacity=".1" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
-//                   <path d="M40 32L53 19M40 32L53 45" stroke="#998ac1" strokeOpacity=".35" strokeWidth="3" strokeLinecap="round" />
-//                   <circle cx="40" cy="32" r="4.5" fill="#998ac1" fillOpacity=".35" />
-//                   <circle cx="53" cy="19" r="3.5" fill="#998ac1" fillOpacity=".35" />
-//                   <circle cx="53" cy="45" r="3.5" fill="#998ac1" fillOpacity=".35" />
-//                 </g>
-//                 <g transform="translate(72 72) scale(.7) translate(-32 -32)">
-//                   <polyline points="25,19 11,32 25,45" fill="none" stroke="white" strokeOpacity=".1" strokeWidth="5" strokeLinecap="round" strokeLinejoin="round" />
-//                   <path d="M40 32L53 19M40 32L53 45" stroke="#998ac1" strokeOpacity=".35" strokeWidth="3" strokeLinecap="round" />
-//                   <circle cx="40" cy="32" r="4.5" fill="#998ac1" fillOpacity=".35" />
-//                   <circle cx="53" cy="19" r="3.5" fill="#998ac1" fillOpacity=".35" />
-//                   <circle cx="53" cy="45" r="3.5" fill="#998ac1" fillOpacity=".35" />
-//                 </g>
-//               </pattern>
-//             </defs>
-//             <rect width="100%" height="100%" fill="url(#intro-network-pattern)" />
-//           </svg>
-//           <div className="relative flex flex-col items-center gap-6 px-6 text-center">
-//             <motion.svg
-//               className="size-[120px]"
-//               viewBox="0 0 64 64"
-//               aria-hidden="true"
-//             >
-//               <rect
-//                 width="64"
-//                 height="64"
-//                 rx="16"
-//                 fill="#191431"
-//                 stroke="#998ac1"
-//                 strokeOpacity=".35"
-//               />
-//               <motion.polyline
-//                 points="25,19 11,32 25,45"
-//                 fill="none"
-//                 stroke="white"
-//                 strokeWidth="5"
-//                 strokeLinecap="round"
-//                 strokeLinejoin="round"
-//                 initial={{ pathLength: 0 }}
-//                 animate={{ pathLength: 1 }}
-//                 transition={{ duration: 0.7, ease: "easeInOut" }}
-//               />
-//               <motion.path
-//                 d="M40 32L53 19M40 32L53 45"
-//                 fill="none"
-//                 stroke="#998ac1"
-//                 strokeWidth="3"
-//                 strokeLinecap="round"
-//                 initial={{ pathLength: 0 }}
-//                 animate={{ pathLength: 1 }}
-//                 transition={{ duration: 0.5, delay: 0.5, ease: "easeInOut" }}
-//               />
-//               {[
-//                 { cx: 40, cy: 32, r: 4.5 },
-//                 { cx: 53, cy: 19, r: 3.5 },
-//                 { cx: 53, cy: 45, r: 3.5 },
-//               ].map((node, index) => (
-//                 <motion.circle
-//                   key={node.cy}
-//                   {...node}
-//                   fill="#998ac1"
-//                   initial={{ opacity: 0, scale: 0 }}
-//                   animate={{ opacity: 1, scale: 1 }}
-//                   transition={{ delay: 0.8 + index * 0.1, duration: 0.45, type: "spring" }}
-//                 />
-//               ))}
-//             </motion.svg>
+  return (
+    <AnimatePresence>
+      {visible && (
+        <motion.div
+          className="fixed inset-0 z-[200] flex items-center justify-center overflow-hidden bg-[#0e1116] text-white"
+          initial={{ y: "0%" }}
+          exit={{
+            y: "-100%",
+            transition: { duration: 0.85, ease: [0.76, 0, 0.24, 1] },
+          }}
+          aria-label={t("loading")}
+          role="status"
+        >
+          <svg
+            className="pointer-events-none absolute inset-0 size-full opacity-80"
+            aria-hidden="true"
+          >
+            <defs>
+              <pattern
+                id="intro-network-pattern"
+                width="96"
+                height="96"
+                patternUnits="userSpaceOnUse"
+              >
+                <g transform="translate(24 24) scale(.7) translate(-32 -32)">
+                  <polyline
+                    points="25,19 11,32 25,45"
+                    fill="none"
+                    stroke="white"
+                    strokeOpacity=".1"
+                    strokeWidth="5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M40 32L53 19M40 32L53 45"
+                    stroke="#2dd4bf"
+                    strokeOpacity=".35"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                  />
+                  <circle
+                    cx="40"
+                    cy="32"
+                    r="4.5"
+                    fill="#2dd4bf"
+                    fillOpacity=".35"
+                  />
+                  <circle
+                    cx="53"
+                    cy="19"
+                    r="3.5"
+                    fill="#2dd4bf"
+                    fillOpacity=".35"
+                  />
+                  <circle
+                    cx="53"
+                    cy="45"
+                    r="3.5"
+                    fill="#2dd4bf"
+                    fillOpacity=".35"
+                  />
+                </g>
+                <g transform="translate(72 72) scale(.7) translate(-32 -32)">
+                  <polyline
+                    points="25,19 11,32 25,45"
+                    fill="none"
+                    stroke="white"
+                    strokeOpacity=".1"
+                    strokeWidth="5"
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                  />
+                  <path
+                    d="M40 32L53 19M40 32L53 45"
+                    stroke="#2dd4bf"
+                    strokeOpacity=".35"
+                    strokeWidth="3"
+                    strokeLinecap="round"
+                  />
+                  <circle
+                    cx="40"
+                    cy="32"
+                    r="4.5"
+                    fill="#2dd4bf"
+                    fillOpacity=".35"
+                  />
+                  <circle
+                    cx="53"
+                    cy="19"
+                    r="3.5"
+                    fill="#2dd4bf"
+                    fillOpacity=".35"
+                  />
+                  <circle
+                    cx="53"
+                    cy="45"
+                    r="3.5"
+                    fill="#2dd4bf"
+                    fillOpacity=".35"
+                  />
+                </g>
+              </pattern>
+            </defs>
+            <rect
+              width="100%"
+              height="100%"
+              fill="url(#intro-network-pattern)"
+            />
+          </svg>
+          <div className="relative flex flex-col items-center gap-6 px-6 text-center">
+            <motion.svg
+              className="size-[120px]"
+              viewBox="0 0 64 64"
+              aria-hidden="true"
+            >
+              <rect
+                width="64"
+                height="64"
+                rx="16"
+                fill="#0e1116"
+                stroke="#2dd4bf"
+                strokeOpacity=".35"
+              />
+              <motion.polyline
+                points="25,19 11,32 25,45"
+                fill="none"
+                stroke="white"
+                strokeWidth="5"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 0.7, ease: "easeInOut" }}
+              />
+              <motion.path
+                d="M40 32L53 19M40 32L53 45"
+                fill="none"
+                stroke="#2dd4bf"
+                strokeWidth="3"
+                strokeLinecap="round"
+                initial={{ pathLength: 0 }}
+                animate={{ pathLength: 1 }}
+                transition={{ duration: 0.5, delay: 0.5, ease: "easeInOut" }}
+              />
+              {[
+                { cx: 40, cy: 32, r: 4.5 },
+                { cx: 53, cy: 19, r: 3.5 },
+                { cx: 53, cy: 45, r: 3.5 },
+              ].map((node, index) => (
+                <motion.circle
+                  key={node.cy}
+                  {...node}
+                  fill="#2dd4bf"
+                  initial={{ opacity: 0, scale: 0 }}
+                  animate={{ opacity: 1, scale: 1 }}
+                  transition={{
+                    delay: 0.8 + index * 0.1,
+                    duration: 0.45,
+                    type: "spring",
+                  }}
+                />
+              ))}
+            </motion.svg>
 
-//             <div className="font-heading text-[clamp(36px,7vw,56px)] leading-none font-semibold">
-//               <motion.span
-//                 className="mr-2 inline-block"
-//                 initial={{ opacity: 0, y: 30 }}
-//                 animate={{ opacity: 1, y: 0 }}
-//                 transition={{ delay: 0.9, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-//               >
-//                 Ayman
-//               </motion.span>
-//               <motion.span
-//                 className="inline-block"
-//                 initial={{ opacity: 0, y: 30 }}
-//                 animate={{ opacity: 1, y: 0 }}
-//                 transition={{ delay: 1.02, duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
-//               >
-//                 Fahd
-//               </motion.span>
-//             </div>
+            <div className=" text-[clamp(36px,7vw,56px)] leading-none font-semibold">
+              <motion.span
+                className="mr-2 inline-block"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  delay: 0.9,
+                  duration: 0.65,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+              >
+                {tName("Ayman")}
+              </motion.span>
+              <motion.span
+                className="inline-block"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{
+                  delay: 1.02,
+                  duration: 0.65,
+                  ease: [0.22, 1, 0.36, 1],
+                }}
+              >
+                {tName("Fahd")}
+              </motion.span>
+            </div>
 
-//             <motion.p
-//               className="m-0 text-[13px] font-medium tracking-[.28em] text-primary"
-//               initial={{ opacity: 0 }}
-//               animate={{ opacity: 1 }}
-//               transition={{ delay: 1.3, duration: 0.6 }}
-//             >
-//               SOFTWARE ENGINEER
-//             </motion.p>
+            <motion.p
+              className="m-0 text-[13px] font-medium tracking-[.28em] text-primary"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 1.3, duration: 0.6 }}
+            >
+              {tNavigation("softwareEngineer")}
+            </motion.p>
 
 //             <div className="h-0.5 w-[min(200px,60vw)] overflow-hidden rounded-full bg-[#242b35]">
 //               <motion.span

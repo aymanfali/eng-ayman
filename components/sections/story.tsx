@@ -2,30 +2,15 @@
 
 import { useRef } from 'react';
 import { motion, useReducedMotion, useScroll, useSpring, useTransform, type MotionValue } from 'motion/react';
-
-const stages = [
-	{
-		label: '01 · PLAN',
-		title: 'Plan the foundation',
-		body: 'Requirements, architecture and a clear scope come first, so the build starts on solid ground.',
-	},
-	{
-		label: '02 · BUILD',
-		title: 'Build with quality',
-		body: 'Clean code, tests and code review in small increments, with a CI pipeline that checks every change.',
-	},
-	{
-		label: '03 · SHIP',
-		title: 'Ship and run it',
-		body: 'Automated deployments, monitoring and performance budgets keep every release stable in production.',
-	},
-];
+import { useTranslations } from 'next-intl';
 
 const sectionClass = "py-[88px] max-[760px]:py-16";
 const containerClass = "mx-auto grid w-full max-w-[1120px] grid-cols-1 items-center gap-6 px-6 md:grid-cols-2 md:gap-12";
 const kickerClass = "mb-3 text-[13px] font-medium tracking-[.24em] text-foreground dark:text-primary";
 
 export function Story() {
+	const t = useTranslations('Story');
+	const stages = t.raw('stages') as { label: string; title: string; body: string }[];
 	const reduce = useReducedMotion();
 	const storyRef = useRef<HTMLElement>(null);
 	const { scrollYProgress } = useScroll({
@@ -38,9 +23,9 @@ export function Story() {
 		<section ref={storyRef} id="story" data-scroll-stack="layer" className={sectionClass}>
 			<div className={containerClass} data-story-stage>
 				<div>
-					<p className={kickerClass}>HOW I WORK</p>
-					<h2 className="mb-7 max-w-160 font-heading text-[clamp(28px,3.6vw,40px)] leading-[1.08] font-semibold">
-						From first commit to stable production
+					<p className={kickerClass}>{t('sectionLabel')}</p>
+					<h2 className="mb-7 max-w-160  text-[clamp(28px,3.6vw,40px)] leading-[1.08] font-semibold">
+						{t('heading')}
 					</h2>
 					<div className="grid gap-7" data-story-panels>
 						{stages.map((stage, index) => (
@@ -48,7 +33,7 @@ export function Story() {
 								<span className="text-[13px] font-medium tracking-[.24em] text-foreground dark:text-primary">
 									{stage.label}
 								</span>
-								<h3 className="mt-2 mb-2.5 font-heading text-[clamp(24px,3vw,32px)] leading-[1.15] font-semibold">
+								<h3 className="mt-2 mb-2.5  text-[clamp(24px,3vw,32px)] leading-[1.15] font-semibold">
 									{stage.title}
 								</h3>
 								<p className="m-0 max-w-115 text-muted-foreground">
@@ -57,7 +42,7 @@ export function Story() {
 							</StoryPanel>
 						))}
 					</div>
-					<div className="mt-7 flex items-center gap-2.5 font-heading text-sm font-medium text-muted-foreground md:hidden" aria-hidden="true">
+					<div className="mt-7 flex items-center gap-2.5  text-sm font-medium text-muted-foreground md:hidden" aria-hidden="true">
 						{stages.map((stage, index) => (
 							<StoryDot
 								key={stage.label}
@@ -73,7 +58,7 @@ export function Story() {
 						</motion.span>
 					</div>
 				</div>
-				<PipelineGraphic progress={progress} reduce={!!reduce} />
+				<PipelineGraphic progress={progress} reduce={!!reduce} t={t} />
 			</div>
 		</section>
 	);
@@ -133,10 +118,17 @@ function StoryDot({ index, progress }: { index: number; progress: MotionValue<nu
 	);
 }
 
+<<<<<<< HEAD
 function PipelineGraphic({ progress, reduce }: { progress: MotionValue<number>; reduce: boolean }) {
 	const stagePlan = useTransform(progress, [0, 0.33, 0.34, 1], ['#998ac1', '#998ac1', '#9ca3af', '#9ca3af']);
 	const stageBuild = useTransform(progress, [0, 0.3, 0.36, 0.63, 0.7, 1], ['#9ca3af', '#9ca3af', '#998ac1', '#998ac1', '#9ca3af', '#9ca3af']);
 	const stageShip = useTransform(progress, [0, 0.63, 0.7, 1], ['#9ca3af', '#9ca3af', '#998ac1', '#998ac1']);
+=======
+function PipelineGraphic({ progress, reduce, t }: { progress: MotionValue<number>; reduce: boolean; t: ReturnType<typeof useTranslations<'Story'>> }) {
+	const stagePlan = useTransform(progress, [0, 0.33, 0.34, 1], ['#2dd4bf', '#2dd4bf', '#9ca3af', '#9ca3af']);
+	const stageBuild = useTransform(progress, [0, 0.3, 0.36, 0.63, 0.7, 1], ['#9ca3af', '#9ca3af', '#2dd4bf', '#2dd4bf', '#9ca3af', '#9ca3af']);
+	const stageShip = useTransform(progress, [0, 0.63, 0.7, 1], ['#9ca3af', '#9ca3af', '#2dd4bf', '#2dd4bf']);
+>>>>>>> c1ad91142f221d30726395e5fce7e8d3b7b71398
 	const modelOpacity = useTransform(progress, [0.28, 0.4], [0.35, 1]);
 	const productOpacity = useTransform(progress, [0.64, 0.76], [0.35, 1]);
 	const sourceGroups = [70, 132, 194, 256];
@@ -163,7 +155,7 @@ function PipelineGraphic({ progress, reduce }: { progress: MotionValue<number>; 
 			preserveAspectRatio="xMidYMid meet"
 			data-story-graphic
 			role="img"
-			aria-label="Requirements feed a build pipeline of code and tests, which ships to a production interface"
+			aria-label={t('graphicLabel')}
 		>
 			<defs>
 				<pattern id="story-dots" width="24" height="24" patternUnits="userSpaceOnUse">
@@ -172,12 +164,12 @@ function PipelineGraphic({ progress, reduce }: { progress: MotionValue<number>; 
 			</defs>
 			<rect width="560" height="360" fill="url(#story-dots)" />
 			<g fontSize="11" fontWeight="500" letterSpacing="2">
-				<motion.text x="40" y="40" style={{ fill: stagePlan }}>PLAN</motion.text>
-				<motion.text x="230" y="40" style={{ fill: stageBuild }}>BUILD</motion.text>
-				<motion.text x="420" y="40" style={{ fill: stageShip }}>SHIP</motion.text>
-				<text x="40" y="334" fontSize="9" letterSpacing="1.5" fill="#9ca3af">REQUIREMENTS</text>
-				<text x="230" y="334" fontSize="9" letterSpacing="1.5" fill="#9ca3af">CODE + TESTS</text>
-				<text x="420" y="334" fontSize="9" letterSpacing="1.5" fill="#9ca3af">PRODUCTION</text>
+				<motion.text x="40" y="40" style={{ fill: stagePlan }}>{t('plan')}</motion.text>
+				<motion.text x="230" y="40" style={{ fill: stageBuild }}>{t('build')}</motion.text>
+				<motion.text x="420" y="40" style={{ fill: stageShip }}>{t('ship')}</motion.text>
+				<text x="40" y="334" fontSize="9" letterSpacing="1.5" fill="#9ca3af">{t('requirements')}</text>
+				<text x="230" y="334" fontSize="9" letterSpacing="1.5" fill="#9ca3af">{t('codeTests')}</text>
+				<text x="420" y="334" fontSize="9" letterSpacing="1.5" fill="#9ca3af">{t('production')}</text>
 			</g>
 			<g stroke="#998ac1" strokeOpacity=".55" strokeWidth="1.5" fill="none" strokeLinecap="round">
 				{connectorPaths.map((path, index) => (
